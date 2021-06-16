@@ -25537,30 +25537,6 @@ object FrmLogin: TFrmLogin
         Size.Height = 129.000000000000000000
         Size.PlatformDefault = False
       end
-      object Layout2: TLayout
-        Align = Top
-        Margins.Top = 30.000000000000000000
-        Position.Y = 159.000000000000000000
-        Size.Width = 251.000000000000000000
-        Size.Height = 48.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 1
-        object RoundRect1: TRoundRect
-          Align = Contents
-          Opacity = 0.800000011920929000
-          Size.Width = 251.000000000000000000
-          Size.Height = 48.000000000000000000
-          Size.PlatformDefault = False
-        end
-        object Edit1: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Center
-          TabOrder = 1
-          Size.Width = 237.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-        end
-      end
     end
   end
 end
