@@ -45,6 +45,9 @@ type
     Layout1: TLayout;
     RoundRect8: TRoundRect;
     Label2: TLabel;
+    TabEscolhaFoto: TTabItem;
+    LayoutEscolha: TLayout;
+    Label3: TLabel;
   private
     { Private declarations }
   public
@@ -57,5 +60,6 @@ var
 implementation
 
 {$R *.fmx}
+{$R *.LgXhdpiPh.fmx ANDROID}
 
 end.
