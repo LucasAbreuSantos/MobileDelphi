@@ -5,16 +5,46 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
-  FMX.Objects, FMX.Controls.Presentation, FMX.Edit;
+  FMX.Objects, FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, FMX.TabControl;
 
 type
   TFrmLogin = class(TForm)
-    Layout1: TLayout;
-    Layout3: TLayout;
-    Image1: TImage;
-    Layout2: TLayout;
+    LayoutPrincipal: TLayout;
+    LayoutLogin: TLayout;
+    ImgLoginLogo: TImage;
+    LayoutEmail: TLayout;
     RoundRect1: TRoundRect;
-    Edit1: TEdit;
+    EdtLoginEmail: TEdit;
+    StyleBook1: TStyleBook;
+    LayoutSenha: TLayout;
+    RoundRect2: TRoundRect;
+    EdtSenha: TEdit;
+    LayoutAcessar: TLayout;
+    RoundRect3: TRoundRect;
+    lblAcessar: TLabel;
+    TabControl: TTabControl;
+    TabLogin: TTabItem;
+    TabConta: TTabItem;
+    LayoutCriar: TLayout;
+    ImageCriarLogo: TImage;
+    LayoutCadNome: TLayout;
+    RoundRect4: TRoundRect;
+    Edt_Cad_Nome: TEdit;
+    LayoutCadSenha: TLayout;
+    RoundRect5: TRoundRect;
+    Edt_Cad_Senha: TEdit;
+    LayoutBtnProximo: TLayout;
+    RoundRect6: TRoundRect;
+    Label1: TLabel;
+    LayoutCadEmail: TLayout;
+    RoundRect7: TRoundRect;
+    Edt_Cad_Email: TEdit;
+    TabFoto: TTabItem;
+    LayoutFoto: TLayout;
+    Circle1: TCircle;
+    Layout1: TLayout;
+    RoundRect8: TRoundRect;
+    Label2: TLabel;
   private
     { Private declarations }
   public
