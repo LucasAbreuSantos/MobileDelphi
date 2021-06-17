@@ -42,20 +42,13 @@ type
     TabFoto: TTabItem;
     LayoutFoto: TLayout;
     Circle1: TCircle;
-    LayoutBotao: TLayout;
+    Layout1: TLayout;
     RoundRect8: TRoundRect;
     Label2: TLabel;
     TabEscolhaFoto: TTabItem;
     LayoutEscolha: TLayout;
     Label3: TLabel;
-    ImgCamera: TImage;
     Image1: TImage;
-    Label4: TLabel;
-    Label5: TLabel;
-    LayoutVoltarFoto: TLayout;
-    ImgVoltar: TImage;
-    LayoutVoltar: TLayout;
-    Image2: TImage;
   private
     { Private declarations }
   public

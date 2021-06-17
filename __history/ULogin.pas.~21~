@@ -54,8 +54,6 @@ type
     Label5: TLabel;
     LayoutVoltarFoto: TLayout;
     ImgVoltar: TImage;
-    LayoutVoltar: TLayout;
-    Image2: TImage;
   private
     { Private declarations }
   public
