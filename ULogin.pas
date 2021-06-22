@@ -90,8 +90,12 @@ type
     procedure ActLibraryDidFinishTaking(Image: TBitmap);
   private
     { Private declarations }
+
+    //T99Permissions é utilizada para solicitar a permissão..
     permissao : T99Permissions;
+
     procedure TrataErroPermissao(Sender : TObject);
+
   public
     { Public declarations }
   end;
@@ -108,74 +112,105 @@ implementation
 
 procedure TFrmLogin.ActCameraDidFinishTaking(Image: TBitmap);
 begin
+
+   //Adiciona a imagem ao Circulo e logo após muda para TabFoto.
    C_foto_editar.Fill.Bitmap.Bitmap := Image;
    ActFoto.Execute;
+
 end;
 
 procedure TFrmLogin.ActLibraryDidFinishTaking(Image: TBitmap);
 begin
+
    C_foto_editar.Fill.Bitmap.Bitmap := Image;
    ActFoto.Execute;
+
 end;
 
 procedure TFrmLogin.C_foto_editarClick(Sender: TObject);
 begin
+
   ActEscolhaFoto.Execute;
+
 end;
 
 procedure TFrmLogin.FormCreate(Sender: TObject);
 begin
+
   permissao := T99Permissions.Create;
+
 end;
 
 procedure TFrmLogin.FormDestroy(Sender: TObject);
 begin
+
   permissao.DisposeOf;
+
 end;
 
 procedure TFrmLogin.FormShow(Sender: TObject);
 begin
+
   TabControl.ActiveTab := TabLogin;
+
 end;
 
 procedure TFrmLogin.ImgCameraClick(Sender: TObject);
 begin
-   permissao.Camera(ActCamera,TrataErroPermissao);
+
+  permissao.Camera(ActCamera,TrataErroPermissao);
+
 end;
 
 procedure TFrmLogin.ImgFotoVoltarClick(Sender: TObject);
 begin
+
   ActConta.Execute;
+
 end;
 
 procedure TFrmLogin.ImgGaleriaClick(Sender: TObject);
 begin
+
   permissao.PhotoLibrary(ActLibrary, TrataErroPermissao);
+
 end;
 
 procedure TFrmLogin.ImgVoltarFotoSelecaoClick(Sender: TObject);
 begin
+
   ActFoto.Execute;
+
 end;
 
 procedure TFrmLogin.LblConta_LoginClick(Sender: TObject);
 begin
+
   ActLogin.Execute;
+
 end;
 
 procedure TFrmLogin.lbl_login_contaClick(Sender: TObject);
 begin
+
    ActConta.Execute;
+
 end;
 
 procedure TFrmLogin.Rect_Conta_ProximoClick(Sender: TObject);
 begin
+
+  //Utiliza a action para fazer o efeito de Deslizar.
   ActFoto.Execute;
+
 end;
 
 procedure TFrmLogin.TrataErroPermissao(Sender: TObject);
 begin
+
+  //Mostra a msg para caso de erro de permissao.
   ShowMessage('Você não possui permissao de acesso para esse recurso!');
+
 end;
 
 end.
