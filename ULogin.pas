@@ -7,6 +7,9 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.Objects, FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, FMX.TabControl,
   System.Actions, FMX.ActnList, u99Permissions, FMX.MediaLibrary.Actions,
+  {$IFDEF ANDROID}
+    FMX.VirtualKeyBoard, FMX.Platform,
+  {$ENDIF}
   FMX.StdActns;
 
 type
@@ -52,8 +55,6 @@ type
     Label3: TLabel;
     ImgCamera: TImage;
     ImgGaleria: TImage;
-    Label4: TLabel;
-    Label5: TLabel;
     LayoutVoltarFoto: TLayout;
     ImgFotoVoltar: TImage;
     LayoutVoltar: TLayout;
@@ -88,6 +89,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure ActCameraDidFinishTaking(Image: TBitmap);
     procedure ActLibraryDidFinishTaking(Image: TBitmap);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     { Private declarations }
 
@@ -145,6 +148,47 @@ procedure TFrmLogin.FormDestroy(Sender: TObject);
 begin
 
   permissao.DisposeOf;
+
+end;
+
+procedure TFrmLogin.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+{$IFDEF ANDROID}
+ var
+   FService : IFMXVirtualKeyBoardService;
+{$ENDIF}
+begin
+
+  {$IFDEF ANDROID}
+     if (key = vkHardwareBack) then
+     Begin
+
+       TPlatformServices.Current.SupportsPlatformService(IFMXVirtualKeyBoardService,IInterface(FService));
+
+       if (FService <> nil) and (TVirutalKeyBoardState.Visible in FService.VirtualKeyBoardState) then
+       Begin
+               // Botao back pressionado e teclado visivel
+               // (Apenas fecha o teclado)
+       End
+       Else
+       Begin
+               // Botao back pressionado e teclado não visivel
+
+               if not (TabControl.ActiveTab <> TabLogin)then
+                 Key := 0;
+
+               if(TabControl.ActiveTab = TabConta)then
+                 ActLogin.Execute
+               else if (TabControl.ActiveTab = TabFoto) then
+                 ActConta.Execute
+               else if (TabControl.ActiveTab = TabEscolhaFoto) then
+                 ActFoto.Execute
+               Else
+                 close;
+       End;
+
+     End;
+  {$ENDIF}
 
 end;
 

@@ -1,0 +1,17 @@
+program Financeiro;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  ULogin in 'ULogin.pas' {FrmLogin},
+  u99Permissions in 'Units\u99Permissions.pas',
+  UPrincipal in 'UPrincipal.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.
