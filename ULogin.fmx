@@ -2,7 +2,7 @@ object FrmLogin: TFrmLogin
   Left = 0
   Top = 0
   Caption = '99 Financeiro'
-  ClientHeight = 532
+  ClientHeight = 560
   ClientWidth = 342
   Fill.Bitmap.Bitmap.PNG = {
     89504E470D0A1A0A0000000D4948445200000351000004B70806000000073FF0
@@ -9225,11 +9225,13 @@ object FrmLogin: TFrmLogin
     D5940000000049454E44AE426082}
   Fill.Bitmap.WrapMode = TileStretch
   Fill.Kind = Bitmap
+  Position = ScreenCenter
   StyleBook = StyleBook1
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  OnClose = FormClose
   OnDestroy = FormDestroy
   OnKeyUp = FormKeyUp
   OnShow = FormShow
@@ -9237,13 +9239,13 @@ object FrmLogin: TFrmLogin
   object LayoutPrincipal: TLayout
     Align = Client
     Size.Width = 342.000000000000000000
-    Size.Height = 532.000000000000000000
+    Size.Height = 560.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object TabControl: TTabControl
       Align = Contents
       Size.Width = 342.000000000000000000
-      Size.Height = 532.000000000000000000
+      Size.Height = 560.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabControlStyle'
       TabHeight = 49.000000000000000000
@@ -9252,13 +9254,13 @@ object FrmLogin: TFrmLogin
       TabPosition = None
       Sizes = (
         342s
-        532s
+        560s
         342s
-        532s
+        560s
         342s
-        532s
+        560s
         342s
-        532s)
+        560s)
       object TabLogin: TTabItem
         CustomIcon = <
           item
@@ -9736,10 +9738,12 @@ object FrmLogin: TFrmLogin
             TabOrder = 3
             object RoundRect1: TRoundRect
               Align = Contents
+              Fill.Color = claWhite
               Opacity = 0.800000011920929000
               Size.Width = 251.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
             end
             object EdtLoginEmail: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -9769,10 +9773,12 @@ object FrmLogin: TFrmLogin
             TabOrder = 2
             object RoundRect2: TRoundRect
               Align = Contents
+              Fill.Color = claWhite
               Opacity = 0.800000011920929000
               Size.Width = 251.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
             end
             object EdtSenha: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -9801,13 +9807,15 @@ object FrmLogin: TFrmLogin
             Size.Height = 48.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
-            object RoundRect3: TRoundRect
+            object RectLogin: TRoundRect
               Align = Contents
-              Fill.Color = claBlack
+              Fill.Color = xFF5769DF
               Opacity = 0.899999976158142100
               Size.Width = 251.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
+              OnClick = RectLoginClick
               object lblAcessar: TLabel
                 Align = Client
                 StyledSettings = [Family]
@@ -9825,7 +9833,7 @@ object FrmLogin: TFrmLogin
         end
         object LayoutLoginCriarConta_Login: TLayout
           Align = Bottom
-          Position.Y = 473.000000000000000000
+          Position.Y = 501.000000000000000000
           Size.Width = 342.000000000000000000
           Size.Height = 59.000000000000000000
           Size.PlatformDefault = False
@@ -10355,10 +10363,12 @@ object FrmLogin: TFrmLogin
             TabOrder = 0
             object RoundRect4: TRoundRect
               Align = Contents
+              Fill.Color = claWhite
               Opacity = 0.800000011920929000
               Size.Width = 251.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
             end
             object Edt_Cad_Nome: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -10388,10 +10398,12 @@ object FrmLogin: TFrmLogin
             TabOrder = 2
             object RoundRect5: TRoundRect
               Align = Contents
+              Fill.Color = claWhite
               Opacity = 0.800000011920929000
               Size.Width = 251.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
             end
             object Edt_Cad_Senha: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -10422,11 +10434,12 @@ object FrmLogin: TFrmLogin
             TabOrder = 3
             object Rect_Conta_Proximo: TRoundRect
               Align = Contents
-              Fill.Color = claBlack
+              Fill.Color = xFF5769DF
               Opacity = 0.899999976158142100
               Size.Width = 251.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
               OnClick = Rect_Conta_ProximoClick
               object Label1: TLabel
                 Align = Client
@@ -10452,10 +10465,12 @@ object FrmLogin: TFrmLogin
             TabOrder = 1
             object RoundRect7: TRoundRect
               Align = Contents
+              Fill.Color = claWhite
               Opacity = 0.800000011920929000
               Size.Width = 251.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
             end
             object Edt_Cad_Email: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -10478,7 +10493,7 @@ object FrmLogin: TFrmLogin
         end
         object LayoutLoginCriarConta_CriarContaa: TLayout
           Align = Bottom
-          Position.Y = 473.000000000000000000
+          Position.Y = 501.000000000000000000
           Size.Width = 342.000000000000000000
           Size.Height = 59.000000000000000000
           Size.PlatformDefault = False
@@ -11126,11 +11141,12 @@ object FrmLogin: TFrmLogin
             TabOrder = 1
             object RoundRect8: TRoundRect
               Align = Contents
-              Fill.Color = claBlack
+              Fill.Color = xFF5769DF
               Opacity = 0.899999976158142100
               Size.Width = 229.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
+              Stroke.Kind = None
               object Label2: TLabel
                 Align = Client
                 StyledSettings = [Family]

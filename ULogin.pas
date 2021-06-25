@@ -25,7 +25,7 @@ type
     RoundRect2: TRoundRect;
     EdtSenha: TEdit;
     LayoutAcessar: TLayout;
-    RoundRect3: TRoundRect;
+    RectLogin: TRoundRect;
     lblAcessar: TLabel;
     TabControl: TTabControl;
     TabLogin: TTabItem;
@@ -91,6 +91,8 @@ type
     procedure ActLibraryDidFinishTaking(Image: TBitmap);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
+    procedure RectLoginClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
 
@@ -110,24 +112,22 @@ implementation
 
 {$R *.fmx}
 
+uses UPrincipal;
+
 
 {$R *.LgXhdpiPh.fmx ANDROID}
 
 procedure TFrmLogin.ActCameraDidFinishTaking(Image: TBitmap);
 begin
-
    //Adiciona a imagem ao Circulo e logo após muda para TabFoto.
    C_foto_editar.Fill.Bitmap.Bitmap := Image;
    ActFoto.Execute;
-
 end;
 
 procedure TFrmLogin.ActLibraryDidFinishTaking(Image: TBitmap);
 begin
-
    C_foto_editar.Fill.Bitmap.Bitmap := Image;
    ActFoto.Execute;
-
 end;
 
 procedure TFrmLogin.C_foto_editarClick(Sender: TObject);
@@ -137,18 +137,21 @@ begin
 
 end;
 
+procedure TFrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  //Ao fechar remove o formulario da memoria;
+  Action   := TCloseAction.caFree;
+  FrmLogin := nil;
+end;
+
 procedure TFrmLogin.FormCreate(Sender: TObject);
 begin
-
   permissao := T99Permissions.Create;
-
 end;
 
 procedure TFrmLogin.FormDestroy(Sender: TObject);
 begin
-
   permissao.DisposeOf;
-
 end;
 
 procedure TFrmLogin.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
@@ -194,67 +197,63 @@ end;
 
 procedure TFrmLogin.FormShow(Sender: TObject);
 begin
-
   TabControl.ActiveTab := TabLogin;
-
 end;
 
 procedure TFrmLogin.ImgCameraClick(Sender: TObject);
 begin
-
   permissao.Camera(ActCamera,TrataErroPermissao);
-
 end;
 
 procedure TFrmLogin.ImgFotoVoltarClick(Sender: TObject);
 begin
-
   ActConta.Execute;
-
 end;
 
 procedure TFrmLogin.ImgGaleriaClick(Sender: TObject);
 begin
-
   permissao.PhotoLibrary(ActLibrary, TrataErroPermissao);
-
 end;
 
 procedure TFrmLogin.ImgVoltarFotoSelecaoClick(Sender: TObject);
 begin
-
   ActFoto.Execute;
-
 end;
 
 procedure TFrmLogin.LblConta_LoginClick(Sender: TObject);
 begin
-
   ActLogin.Execute;
-
 end;
 
 procedure TFrmLogin.lbl_login_contaClick(Sender: TObject);
 begin
-
    ActConta.Execute;
+end;
+
+procedure TFrmLogin.RectLoginClick(Sender: TObject);
+begin
+
+  //Acessa o Form Principal
+  if not Assigned(FrmPrincipal) then
+    Application.CreateForm(TFrmPrincipal,FrmPrincipal);
+
+  Application.MainForm := FrmPrincipal;
+  FrmPrincipal.Show;
+
+  FrmLogin.Close;
 
 end;
 
 procedure TFrmLogin.Rect_Conta_ProximoClick(Sender: TObject);
 begin
-
   //Utiliza a action para fazer o efeito de Deslizar.
   ActFoto.Execute;
-
 end;
 
 procedure TFrmLogin.TrataErroPermissao(Sender: TObject);
 begin
-
   //Mostra a msg para caso de erro de permissao.
   ShowMessage('Você não possui permissao de acesso para esse recurso!');
-
 end;
 
 end.

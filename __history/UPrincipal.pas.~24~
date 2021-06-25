@@ -1,0 +1,144 @@
+unit UPrincipal;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Layouts, FMX.Controls.Presentation, FMX.StdCtrls, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView;
+
+type
+  TFrmPrincipal = class(TForm)
+    LayoutPrincipal: TLayout;
+    LayoutTop1: TLayout;
+    Img_Menu: TImage;
+    C_avatar: TCircle;
+    Img_Notificacao: TImage;
+    lblTitulo: TLabel;
+    LayoutSaldo: TLayout;
+    Label1: TLabel;
+    Label2: TLabel;
+    LayoutIndicadores: TLayout;
+    LayoutIndCenter: TLayout;
+    LayoutIndReceitas: TLayout;
+    Img_Receita: TImage;
+    lblReceita: TLabel;
+    lblReceitaDesc: TLabel;
+    LayoutIndDespesas: TLayout;
+    Img_Despesa: TImage;
+    lblDespesas: TLabel;
+    lblDespesasDesc: TLabel;
+    RectBottom: TRectangle;
+    ImgAdd: TImage;
+    RectInformacao: TRectangle;
+    LayoutOpcInformacao: TLayout;
+    lblUltLanc: TLabel;
+    lblVerTodos: TLabel;
+    lvLancamento: TListView;
+    Image_Categoria: TImage;
+    procedure FormShow(Sender: TObject);
+    procedure lvLancamentoUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
+  private
+    { Private declarations }
+    procedure AddLancamento(id_lancamento, descricao, categoria : String; dt: TDateTime; Valor : Double; Foto : TStream);
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+{$R *.fmx}
+
+procedure TFrmPrincipal.AddLancamento(id_lancamento,
+                                      descricao,
+                                      categoria : String;
+                                      dt: TDateTime;
+                                      Valor: Double;
+                                      Foto: TStream);
+var
+   txt : TListItemText;
+   img : TListItemImage;
+   bmp : TBitmap;
+begin
+
+   With lvLancamento.Items.Add do
+   Begin
+
+     //Dessa forma
+     txt := TListItemText(Objects.FindDrawable('txtDescricao'));
+     txt.Text := descricao;
+
+     // ou dessa forma mais simples..
+     TListItemText(Objects.FindDrawable('txtCategoria')).Text := categoria;
+     TListItemText(Objects.FindDrawable('txtValor')).Text     := FormatFloat('#,##0.00',Valor);
+     TListItemText(Objects.FindDrawable('txtData')).Text      := FormatDateTime('dd/mm',dt);
+
+     //Imagem
+     img := TListItemImage(Objects.FindDrawable('ImageIcone'));
+
+     if Foto <> nil then
+     Begin
+
+       //Quem vai destruir nesse caso é o proprio delphi na ListView
+       bmp := TBitmap.Create;
+       bmp.LoadFromStream(Foto);
+
+       img.OwnsBitmap := True;
+       img.Bitmap := bmp;
+
+     End;
+
+
+   End;
+
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+var
+  Foto : TStream;
+  I: Integer;
+begin
+
+  //Instancia a stream da foto e porenquanto carrega a foto do image;
+  //O "Foto.Position" garante que a imagem vai ser carregada da posição zero dela.
+
+  Foto := TMemoryStream.Create;
+  Image_Categoria.Bitmap.SaveToStream(Foto); // Salva a Bitmap da imagem na Stream Foto;
+  Foto.Position := 0;
+
+  for I := 1 to 10 do
+   AddLancamento('0001','Código de Passagem','Tranporte', date ,-45, foto);
+
+  Foto.DisposeOf; //Destroi a variavel TStream;
+
+end;
+
+procedure TFrmPrincipal.lvLancamentoUpdateObjects(const Sender: TObject;
+  const AItem: TListViewItem);
+var
+  txt : TListItemText;
+  //img : TListItemImage;
+begin
+
+  //Usando a variavel
+  txt := TListItemText(AItem.Objects.FindDrawable('txtDescricao'));
+  txt.Width := lvLancamento.Width - txt.PlaceOffset.X - 90;
+
+  {img := TListItemImage(AItem.Objects.FindDrawable('ImageIcone'));
+
+  if(lvLancamento.Width < 200)then
+  Begin
+    img.Visible := False;
+    txt.PlaceOffset.X := 3;
+    //Fazendo direto
+    TListItemText(AItem.Objects.FindDrawable('txtCategoria')).PlaceOffset.X := 3;
+  End; }
+
+end;
+
+end.
