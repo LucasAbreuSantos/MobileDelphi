@@ -40,6 +40,10 @@ type
     procedure FormShow(Sender: TObject);
     procedure lvLancamentoUpdateObjects(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure lvLancamentoItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure lvLancamentoItemClickEx(const Sender: TObject; ItemIndex: Integer;
+      const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
   private
     { Private declarations }
     procedure AddLancamento(id_lancamento, descricao, categoria : String; dt: TDateTime; Valor : Double; Foto : TStream);
@@ -68,6 +72,8 @@ begin
 
    With lvLancamento.Items.Add do
    Begin
+     //Adiciona a tagstring da list_view
+     TagString := id_lancamento;
 
      //Dessa forma
      txt := TListItemText(Objects.FindDrawable('txtDescricao'));
@@ -118,14 +124,62 @@ begin
 
 end;
 
+procedure TFrmPrincipal.lvLancamentoItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+   //Adicionado ao adicionar o Item
+   //ShowMessage(AItem.TagString);
+
+   //Ex: Aumenta e diminui o Item...
+   {if(AItem.Height > 199)then
+     AItem.Height := 60
+   else
+     AItem.Height := 200;}
+
+end;
+
+procedure TFrmPrincipal.lvLancamentoItemClickEx(const Sender: TObject;
+  ItemIndex: Integer; const LocalClickPos: TPointF;
+  const ItemObject: TListItemDrawable);
+begin
+  //Clique do Objeto do Item da ListView
+  if(TListView(Sender).Selected <> nil)then
+  Begin
+    if(ItemObject is TListItemImage)then
+    Begin
+      //Verifica se é um objeto imagem.
+      //Ex de uso:
+      //Img_Despesa.Bitmap := TListItemImage(ItemObject).Bitmap;
+    End
+    else if (ItemObject is TListItemText) then
+    Begin
+      //Verifica se é um objeto de Texto
+      //Ex de uso:
+      //ShowMessage(TListItemText(ItemObject).Text);
+    End;
+  End;
+end;
+
 procedure TFrmPrincipal.lvLancamentoUpdateObjects(const Sender: TObject;
   const AItem: TListViewItem);
 var
   txt : TListItemText;
+  //img : TListItemImage;
 begin
 
+  //Usando a variavel
   txt := TListItemText(AItem.Objects.FindDrawable('txtDescricao'));
-  txt.Width := lvLancamento.Width - txt.PlaceOffset.X -
+  txt.Width := lvLancamento.Width - txt.PlaceOffset.X - 90;
+
+  {img := TListItemImage(AItem.Objects.FindDrawable('ImageIcone'));
+
+  if(lvLancamento.Width < 200)then
+  Begin
+    img.Visible := False;
+    txt.PlaceOffset.X := 3;
+    //Fazendo direto
+    TListItemText(AItem.Objects.FindDrawable('txtCategoria')).PlaceOffset.X := 3;
+  End; }
 
 end;
 

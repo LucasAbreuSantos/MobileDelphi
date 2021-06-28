@@ -44,6 +44,8 @@ type
       const AItem: TListViewItem);
     procedure lvLancamentoItemClickEx(const Sender: TObject; ItemIndex: Integer;
       const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
+    procedure lvLancamentoPaint(Sender: TObject; Canvas: TCanvas;
+      const ARect: TRectF);
   private
     { Private declarations }
     procedure AddLancamento(id_lancamento, descricao, categoria : String; dt: TDateTime; Valor : Double; Foto : TStream);
@@ -129,6 +131,13 @@ procedure TFrmPrincipal.lvLancamentoItemClick(const Sender: TObject;
 begin
    //Adicionado ao adicionar o Item
    //ShowMessage(AItem.TagString);
+
+   //Ex: Aumenta e diminui o Item...
+   {if(AItem.Height > 199)then
+     AItem.Height := 60
+    else
+     AItem.Height := 200;}
+
 end;
 
 procedure TFrmPrincipal.lvLancamentoItemClickEx(const Sender: TObject;
@@ -150,6 +159,21 @@ begin
       //Ex de uso:
       //ShowMessage(TListItemText(ItemObject).Text);
     End;
+  End;
+end;
+
+procedure TFrmPrincipal.lvLancamentoPaint(Sender: TObject; Canvas: TCanvas;
+  const ARect: TRectF);
+begin
+  //List View infinito carregando a cada ultimos 4 itens = "lvLancamento.Items.Count - 4".
+  if(lvLancamento.Items.Count > 0)then
+  Begin
+     if(lvLancamento.GetItemRect(lvLancamento.Items.Count - 4).Bottom <= lvLancamento.Height)then
+     Begin
+       //Aqui carregaria com mais itens..
+       AddLancamento('0001','Compra Supermercado','Transporte', 45.0, date, nil);
+       AddLancamento('0001','Compra Supermercado','Transporte', 45.0, date, nil);
+     End;
   End;
 end;
 

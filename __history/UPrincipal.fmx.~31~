@@ -3,7 +3,7 @@ object FrmPrincipal: TFrmPrincipal
   Top = 0
   Caption = '99 Financeiro'
   ClientHeight = 560
-  ClientWidth = 339
+  ClientWidth = 337
   Fill.Bitmap.Bitmap.PNG = {
     89504E470D0A1A0A0000000D4948445200000438000008400806000000CCC189
     57000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
@@ -1088,13 +1088,13 @@ object FrmPrincipal: TFrmPrincipal
   DesignerMasterStyle = 0
   object LayoutPrincipal: TLayout
     Align = Client
-    Size.Width = 339.000000000000000000
+    Size.Width = 337.000000000000000000
     Size.Height = 560.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object LayoutTop1: TLayout
       Align = Top
-      Size.Width = 339.000000000000000000
+      Size.Width = 337.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -2186,7 +2186,7 @@ object FrmPrincipal: TFrmPrincipal
         Margins.Top = 5.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 5.000000000000000000
-        Position.X = 284.000000000000000000
+        Position.X = 282.000000000000000000
         Position.Y = 5.000000000000000000
         Size.Width = 50.000000000000000000
         Size.Height = 40.000000000000000000
@@ -2227,7 +2227,7 @@ object FrmPrincipal: TFrmPrincipal
         Margins.Top = 10.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 10.000000000000000000
-        Position.X = 229.000000000000000000
+        Position.X = 227.000000000000000000
         Position.Y = 10.000000000000000000
         Size.Width = 50.000000000000000000
         Size.Height = 30.000000000000000000
@@ -2236,7 +2236,7 @@ object FrmPrincipal: TFrmPrincipal
       object lblTitulo: TLabel
         Align = Contents
         StyledSettings = [Family, Style]
-        Size.Width = 339.000000000000000000
+        Size.Width = 337.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 16.000000000000000000
@@ -2249,7 +2249,7 @@ object FrmPrincipal: TFrmPrincipal
     object LayoutSaldo: TLayout
       Align = Top
       Position.Y = 50.000000000000000000
-      Size.Width = 339.000000000000000000
+      Size.Width = 337.000000000000000000
       Size.Height = 95.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
@@ -2285,7 +2285,7 @@ object FrmPrincipal: TFrmPrincipal
     object LayoutIndicadores: TLayout
       Align = Top
       Position.Y = 145.000000000000000000
-      Size.Width = 339.000000000000000000
+      Size.Width = 337.000000000000000000
       Size.Height = 72.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
@@ -2509,7 +2509,7 @@ object FrmPrincipal: TFrmPrincipal
       Align = Bottom
       Fill.Color = claWhite
       Position.Y = 504.000000000000000000
-      Size.Width = 339.000000000000000000
+      Size.Width = 337.000000000000000000
       Size.Height = 56.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
@@ -2567,7 +2567,7 @@ object FrmPrincipal: TFrmPrincipal
       Align = Client
       Corners = [TopLeft, TopRight]
       Fill.Color = claWhite
-      Size.Width = 339.000000000000000000
+      Size.Width = 337.000000000000000000
       Size.Height = 287.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
@@ -2575,7 +2575,7 @@ object FrmPrincipal: TFrmPrincipal
       YRadius = 25.000000000000000000
       object LayoutOpcInformacao: TLayout
         Align = Top
-        Size.Width = 339.000000000000000000
+        Size.Width = 337.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -2598,7 +2598,7 @@ object FrmPrincipal: TFrmPrincipal
           StyledSettings = [Family]
           Opacity = 0.699999988079071000
           Margins.Right = 20.000000000000000000
-          Position.X = 174.000000000000000000
+          Position.X = 172.000000000000000000
           Size.Width = 145.000000000000000000
           Size.Height = 50.000000000000000000
           Size.PlatformDefault = False
@@ -2614,22 +2614,116 @@ object FrmPrincipal: TFrmPrincipal
         ItemEditAppearanceClassName = 'TDynamicAppearance'
         HeaderAppearanceClassName = 'TListHeaderObjects'
         FooterAppearanceClassName = 'TListHeaderObjects'
+        OnUpdateObjects = lvLancamentoUpdateObjects
+        ItemSpaces.Left = 0.000000000000000000
+        ItemSpaces.Right = 0.000000000000000000
         Align = Client
-        Size.Width = 339.000000000000000000
+        Size.Width = 337.000000000000000000
         Size.Height = 237.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
+        ItemAppearance.ItemHeight = 60
         ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
           item
-            AppearanceObjectName = 'Text1'
+            AppearanceObjectName = 'txtDescricao'
             AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 14.000000000000000000
+            Appearance.TextAlign = Leading
+            Appearance.TextColor = xFF6B6B6B
+            Appearance.Width = 113.000000000000000000
+            Appearance.Height = 17.000000000000000000
+            Appearance.PlaceOffset.X = 56.000000000000000000
+            Appearance.PlaceOffset.Y = 7.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'ImageIcone'
+            AppearanceClassName = 'TImageObjectAppearance'
+            Appearance.Width = 38.000000000000000000
+            Appearance.Height = 38.000000000000000000
+            Appearance.PlaceOffset.X = 7.000000000000000000
+            Appearance.PlaceOffset.Y = 10.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'txtCategoria'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 14.000000000000000000
+            Appearance.TextAlign = Leading
+            Appearance.TextColor = xFFBEBEBE
+            Appearance.Width = 119.000000000000000000
+            Appearance.Height = 17.000000000000000000
+            Appearance.PlaceOffset.X = 56.000000000000000000
+            Appearance.PlaceOffset.Y = 31.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'txtValor'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 14.000000000000000000
+            Appearance.TextAlign = Trailing
+            Appearance.TextColor = xFF6B6B6B
+            Appearance.Width = 87.000000000000000000
+            Appearance.Height = 17.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.PlaceOffset.X = -4.000000000000000000
+            Appearance.PlaceOffset.Y = 7.000000000000000000
+          end
+          item
+            AppearanceObjectName = 'txtData'
+            AppearanceClassName = 'TTextObjectAppearance'
+            Appearance.Font.Size = 14.000000000000000000
+            Appearance.TextAlign = Trailing
+            Appearance.TextColor = xFFBEBEBE
+            Appearance.Width = 87.000000000000000000
+            Appearance.Height = 17.000000000000000000
+            Appearance.Align = Trailing
+            Appearance.PlaceOffset.X = -4.000000000000000000
+            Appearance.PlaceOffset.Y = 31.000000000000000000
           end>
         ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
           item
             AppearanceObjectName = 'Text1'
             AppearanceClassName = 'TTextObjectAppearance'
           end>
+        OnItemClick = lvLancamentoItemClick
+        OnItemClickEx = lvLancamentoItemClickEx
       end
     end
+  end
+  object Image_Categoria: TImage
+    MultiResBitmap.Height = 64
+    MultiResBitmap.Width = 64
+    MultiResBitmap = <
+      item
+        Width = 64
+        Height = 64
+        PNG = {
+          89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+          DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+          025449444154785EED9AED6DC230108649C8007482B2419010BFCB061DA18CD0
+          113A4247800DDA0DDADF08B599A07483F47F20BD17CE52F8087613C734F13D92
+          397F28CEDD9BF842C03D4110BC26605B99388E0751148DB839C5479EE7680F82
+          201892BD455F0DBE69BE35D994E6FBDC77F5DEF09165D9679224E9AEA7221705
+          70109C2D2A8B542AC0783C9E9379D8B72E43277F87E593A77086EAEB300CD3E5
+          72A91CAAC46432196DB7DB01CD3964D151DF5D146ADFC11AB058AD5633AE1F70
+          49801CB6C9E06C61221209703656AD006507EAA0E3214EBC6FD526213FD452FC
+          13BA3842B64D602B7860732E33A09C52AF0A758F5734ED479377402B683207D4
+          BEFA45EAFAE13C07A8A7870D6CCE658C6EEDB4055D1C9203D89ED085AB5FE41A
+          DF03DA055DF1390A373B9B0310230A370FEE00BCF818BDFCB49C8338BD5F0222
+          005B6F1101D87A8B08C0D65B8A022CB8741DB3388FBF41B5155D1CB204D87A8B
+          08C0D65B4400B6DE2202B0F516EF05905F85D90AC7C8BB802768734071ED602B
+          CA66B37956DB4EF0A765BFDF7FBCD65619137FCEC551C4F80EE07D381FEA6400
+          75F4618CBB9C61CB1F6301A0342C54CEB2EC0645FD6D4D634FB02EB1E58FB100
+          4A699A7C867D7728A8F3D83DAC4B6CF9E37D123416806EAF57D8288A5EE2381E
+          A2A05E1C73892D7F8C05A0EC8A75F54325A6137DA1A08E3E1E738A2D7F8C05C0
+          A3250CC369515DD4D1778DC760E3FEE8BE41B5055D1CDE2741791B647B02AD27
+          F77BF31AC24A2CBAB5A41BB7856D3FBCCF0122005B6F297D0A1C63BAAECAB2AD
+          2D6CFB617C07986452174F8EFFE28720085DA0D7FB057DEAA2B98FD834220000
+          000049454E44AE426082}
+        FileName = 
+          'C:\Users\Administrator\Pictures\Projetos\Mobile\cat-transporte.p' +
+          'ng'
+      end>
+    Position.X = 24.000000000000000000
+    Position.Y = 336.000000000000000000
+    Visible = False
   end
 end
