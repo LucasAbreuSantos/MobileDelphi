@@ -48,7 +48,7 @@ type
       const ARect: TRectF);
   private
     { Private declarations }
-    procedure AddLancamento(id_lancamento, descricao, categoria : String; dt: TDateTime; Valor : Double; Foto : TStream);
+    procedure AddLancamento(id_lancamento, descricao, categoria : String; dt: TDateTime; Valor : Currency; Foto : TStream);
   public
     { Public declarations }
   end;
@@ -64,7 +64,7 @@ procedure TFrmPrincipal.AddLancamento(id_lancamento,
                                       descricao,
                                       categoria : String;
                                       dt: TDateTime;
-                                      Valor: Double;
+                                      Valor: Currency;
                                       Foto: TStream);
 var
    txt : TListItemText;
@@ -74,6 +74,7 @@ begin
 
    With lvLancamento.Items.Add do
    Begin
+
      //Adiciona a tagstring da list_view
      TagString := id_lancamento;
 
@@ -164,15 +165,25 @@ end;
 
 procedure TFrmPrincipal.lvLancamentoPaint(Sender: TObject; Canvas: TCanvas;
   const ARect: TRectF);
+var
+  Foto : TStream;
 begin
   //List View infinito carregando a cada ultimos 4 itens = "lvLancamento.Items.Count - 4".
   if(lvLancamento.Items.Count > 0)then
   Begin
      if(lvLancamento.GetItemRect(lvLancamento.Items.Count - 4).Bottom <= lvLancamento.Height)then
      Begin
+
        //Aqui carregaria com mais itens..
-       AddLancamento('0001','Compra Supermercado','Transporte', 45.0, date, nil);
-       AddLancamento('0001','Compra Supermercado','Transporte', 45.0, date, nil);
+       Foto := TMemoryStream.Create;
+       Image_Categoria.Bitmap.SaveToStream(Foto);
+       Foto.Position := 0;
+
+       AddLancamento('0001','Compra Supermercado','Transporte', date, -45, foto);
+       AddLancamento('0001','Compra Supermercado','Transporte', date, -45, foto);
+
+       Foto.DisposeOf;
+
      End;
   End;
 end;
