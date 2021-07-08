@@ -7,13 +7,13 @@ uses
   u99Permissions in 'Units\u99Permissions.pas',
   UPrincipal in 'UPrincipal.pas' {FrmPrincipal},
   ULancamentos in 'ULancamentos.pas' {FrmLancamentos},
-  ULancamentosCad in 'ULancamentosCad.pas' {FrmLancamentosCad};
+  ULancamentosCad in 'ULancamentosCad.pas' {Form1};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TFrmLogin, FrmLogin);
-  Application.CreateForm(TFrmLancamentosCad, FrmLancamentosCad);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
