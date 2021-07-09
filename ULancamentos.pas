@@ -26,15 +26,19 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Image1: TImage;
+    ImgAdd: TImage;
     lvLancamento: TListView;
     procedure ImgFotoVoltarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure lvLancamentoUpdateObjects(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure lvLancamentoItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure ImgAddClick(Sender: TObject);
   private
     { Private declarations }
+    procedure EditarLancamento(id_lanc : string);
   public
     { Public declarations }
   end;
@@ -46,13 +50,26 @@ implementation
 
 {$R *.fmx}
 
-uses UPrincipal;
+uses UPrincipal, ULancamentosCad;
+
+procedure TFrmLancamentos.EditarLancamento(id_lanc: string);
+begin
+
+   if not Assigned(FrmLancamentosCad) then
+    Application.CreateForm(TFrmLancamentosCad,FrmLancamentosCad);
+
+   FrmLancamentosCad.Show;
+
+end;
 
 procedure TFrmLancamentos.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 
-  //Action := TCloseAction.caFree;
-  //FrmLancamentos := Nil;   //Esta destruindo no close do frm principal.
+  if(Assigned(FrmLancamentosCad))then
+  Begin
+    FrmLancamentosCad.DisposeOf;
+    FrmLancamentosCad := Nil;
+  End;
 
 end;
 
@@ -81,9 +98,22 @@ begin
 
 end;
 
+procedure TFrmLancamentos.ImgAddClick(Sender: TObject);
+begin
+  EditarLancamento('');
+end;
+
 procedure TFrmLancamentos.ImgFotoVoltarClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmLancamentos.lvLancamentoItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+
+  EditarLancamento('');
+
 end;
 
 procedure TFrmLancamentos.lvLancamentoUpdateObjects(const Sender: TObject;
