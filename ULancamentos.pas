@@ -111,9 +111,7 @@ end;
 procedure TFrmLancamentos.lvLancamentoItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
-
   EditarLancamento('');
-
 end;
 
 procedure TFrmLancamentos.lvLancamentoUpdateObjects(const Sender: TObject;
